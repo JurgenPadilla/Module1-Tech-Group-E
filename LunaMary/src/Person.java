@@ -33,11 +33,5 @@ public class Person {
         this.sexo = sexo;
     }
 
-    public void showDataPerson() {
-        System.out.println(nombre);
-//        System.out.println(edad);
-        System.out.println(sexo);
-    }
-
 
 }

@@ -1,45 +1,37 @@
-import java.util.List;
-import java.util.Scanner;
-
+import AdditionalClasses.OurStringArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
+        /**
+         * Instructions.
+         * Add the necessary classes and methods to compile and run the project.
+         * This file cannot be changed, not a single word or symbol. If you do, don't worry I'll notice.
+         * You are not allowed to use ArrayList<> class.
+         * Tip: Use String[] and create a wrapper for it.
+         * Ask your classmates or me, if you have any question, doubt or need any help.
+         *
+         * You must send a pull request to the repository with your solution until Wednesday morning.
+         * Good luck and don't forget to have fun!
+         */
 
-        OptionAsk optionAsk1 = new OptionAsk("Haces pasar a una chica que crees que baja después que tú…", 10, "A", false);
-        OptionAsk optionAsk2 = new OptionAsk("Te pones en un rincón", 10, "B", false);
-        OptionAsk optionAsk3 = new OptionAsk("Saludas a todo el mundo y te pones a hablar", 10, "C", false);
-        OptionAsk optionAsk4 = new OptionAsk("Te das cuenta de que una persona anda algo tocada", 10, "D", false);
+        OurStringArrayList myList = new OurStringArrayList(12);
+        myList.add("around");
+        myList.add("the");
+        myList.add("world");
+        myList.add("!");
 
-        OptionAsk optionAsk5 = new OptionAsk("Llamas a emergencias y procuras que la gente no se le agolpe", 10, "A", false);
-        OptionAsk optionAsk6 = new OptionAsk("Le preguntas lo que ha pasado", 10, "B", false);
-        OptionAsk optionAsk7 = new OptionAsk("Le das la mano hasta que llega ayuda", 10, "C", false);
-        OptionAsk optionAsk8 = new OptionAsk("Te interesas por cómo se siente y procuras arroparla", 10, "D", false);
+        myList.remove(3);
 
-        List<OptionAsk> optionAskList1 = null;
-        optionAskList1.add(optionAsk1);
-        optionAskList1.add(optionAsk2);
-        optionAskList1.add(optionAsk3);
-        optionAskList1.add(optionAsk4);
+        // region evaluation
+        Integer accumulator = 0;
+        if (myList.size() == 3) accumulator += 10;
+        if (myList.get(2).equals("world")) accumulator += 10;
+        if (myList.get(3) == null) accumulator += 10;
+        if (myList.toString().equals("[around the world]") ) accumulator += 10;
+        if (!myList.contains("hello") && myList.contains("the")) accumulator += 10;
 
-        List<OptionAsk> optionAskList2 = null;
-        optionAskList2.add(optionAsk5);
-        optionAskList2.add(optionAsk6);
-        optionAskList2.add(optionAsk7);
-        optionAskList2.add(optionAsk8);
-
-
-        Ask ask1 = new Ask(optionAskList1, "COMO TE COMPORTAS CUANDO ENTRAS EN UN ASCENSOR?", "P1");
-        Ask ask2 = new Ask(optionAskList1, "COMO TE COMPORTAS CUANDO TE ENCUENTRAS CON UNA PERSONA QUE SE HA ACCIDENTADO EN LA CALLE?", "P1");
-        List<Ask> askList = null;
-        askList.add(ask1);
-        askList.add(ask2);
-
-
-        Menu menu = new Menu(askList);
-        menu.registerPerson();
-        menu.showAsks();
-
-
+        System.out.println((accumulator*2) + "/100");
+        // endregion
     }
 }

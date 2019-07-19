@@ -1,0 +1,61 @@
+package AdditionalClasses;
+
+import java.lang.reflect.Array;
+
+public class OurStringArrayList {
+    private String[] myList;
+    private Integer position;
+    private Integer accumulator;
+
+    public OurStringArrayList (Integer size) {
+        myList = new String[size];
+        position = 0;
+    }
+
+    public Integer size() {
+        return position-1;
+    }
+
+
+    public void add(String text) {
+        myList[position] = text;
+        position++;
+    }
+
+    public String get(Integer number) {
+        return myList[number];
+    }
+
+    public void remove(Integer number) {
+
+        myList[number] = null;
+    }
+
+    public boolean contains(String str) {
+        for (int i = 0; i < position - 1; i++) {
+            if (myList[i].equals(str)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Integer toInteger(){
+        return accumulator;
+    }
+    public String toString(){
+        String result = "";
+
+        for (int i = 0; i < position-1; i++) {
+            if (i==0){
+                result = result + "[" + myList[i];
+            }
+
+            else {
+                result = result + " " + myList[i];
+            }
+
+        }
+        return result+"]";
+    }
+
+}

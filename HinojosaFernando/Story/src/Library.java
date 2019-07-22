@@ -1,29 +1,24 @@
+import java.util.ArrayList;
+
 public class Library {
     private Integer numberBooks;
-    private Story book;
-    private Author author;
+    private ArrayList [] storyCollection;
+    private Person owner;
 
+    public void registerItem (Story item){
+
+    }
+    public void removeItem (Story item){
+
+    }
+    public void showItem(){
+
+    }
     public Integer getNumberBooks() {
         return numberBooks;
     }
 
-    public void setNumberBooks(Integer numberBooks) {
-        this.numberBooks = numberBooks;
-    }
-
-    public Story getBook() {
-        return book;
-    }
-
-    public void setBook(Story book) {
-        this.book = book;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(Author author) {
-        this.author = author;
+    public Person getOwner() {
+        return owner;
     }
 }

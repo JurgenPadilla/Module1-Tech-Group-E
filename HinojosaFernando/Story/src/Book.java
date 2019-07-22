@@ -2,7 +2,11 @@ public class Book extends Story {
     private Integer codeBook;
     private Author author;
     private String publishing;
-    private TypeBooks type;
+    private TypeBook type;
+    private String lenguage;
+
+    public void playBook() {
+    }
 
     public Integer getCodeBook() {
         return codeBook;
@@ -28,11 +32,11 @@ public class Book extends Story {
         this.publishing = publishing;
     }
 
-    public TypeBooks getType() {
+    public TypeBook getType() {
         return type;
     }
 
-    public void setType(TypeBooks type) {
+    public void setType(TypeBook type) {
         this.type = type;
     }
 }

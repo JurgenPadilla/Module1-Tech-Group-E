@@ -1,4 +1,6 @@
-public class Movie {
+public class Movie extends Story {
+    private String mainActor;
+    private String mainActress;
     private Integer idMovie;
     private Filmmaker person;
     private Integer year;
@@ -6,6 +8,14 @@ public class Movie {
     private Person stars;
     private String releaseDate;
     private Book baseOn;
+
+    public String getMainActor() {
+        return mainActor;
+    }
+
+    public String getMainActress() {
+        return mainActress;
+    }
 
     public Integer getIdMovie() {
         return idMovie;

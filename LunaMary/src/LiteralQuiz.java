@@ -1,16 +1,13 @@
-import java.util.Scanner;
-
-
-class OptionAsk {
+class LiteralQuiz {
     private String option;
     private Integer point;
     private String sigla;
     private Boolean status;
 
-    public OptionAsk(String option,
-                     Integer point,
-                     String sigla,
-                     Boolean status) {
+    public LiteralQuiz(String option,
+                       Integer point,
+                       String sigla,
+                       Boolean status) {
 
         this.option = option;
         this.point = point;

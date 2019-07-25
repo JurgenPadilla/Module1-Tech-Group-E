@@ -1,26 +1,25 @@
 import java.util.List;
-import java.util.Scanner;
 
 
-class Ask {
+class Quiz {
 
-    List<OptionAsk> optionAsks;
+    List<SelectedQuiz> selectedQuizs;
     private String ask;
     private String sigla;
 
-    public Ask(List<OptionAsk> optionAsks,
-               String ask, String sigla) {
-        this.optionAsks = optionAsks;
+    public Quiz(List<SelectedQuiz> selectedQuizs,
+                String ask, String sigla) {
+        this.selectedQuizs = selectedQuizs;
         this.ask = ask;
         this.sigla = sigla;
     }
 
-    public List<OptionAsk> getOptionAsks() {
-        return optionAsks;
+    public List<SelectedQuiz> getSelectedQuizs() {
+        return selectedQuizs;
     }
 
-    public void setOptionAsks(List<OptionAsk> optionAsks) {
-        this.optionAsks = optionAsks;
+    public void setSelectedQuizs(List<SelectedQuiz> selectedQuizs) {
+        this.selectedQuizs = selectedQuizs;
     }
 
     public String getAsk() {

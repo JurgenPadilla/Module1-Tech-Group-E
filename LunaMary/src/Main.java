@@ -38,7 +38,27 @@ public class Main {
 
         LiteralQuiz literalQuiz = new LiteralQuiz("Que opinas sobre la tecnologia");
 
+        List<IQuestion> iQuestions1 = new ArrayList<IQuestion>();
+        iQuestions1.add(selectedQuiz1);
 
+        List<IQuestion> iQuestions2 = new ArrayList<IQuestion>();
+        iQuestions2.add(selectedQuiz2);
+
+        Quiz quiz1 = new Quiz(iQuestions1, typeQuizPsic);
+        Quiz quiz2 = new Quiz(iQuestions2, typeQuizPsic);
+
+        List<Quiz> quizList = new ArrayList<Quiz>();
+        quizList.add(quiz1);
+        quizList.add(quiz2);
+
+        List<AnswerPerson> answerPeople = new ArrayList<AnswerPerson>();
+
+        QuizLibrary quizLibrary1 = new QuizLibrary(quizList, answerPeople, "Psicologico");
+        QuizLibrary quizLibrary2 = new QuizLibrary(quizList, answerPeople, "Matematico");
+
+        List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
+        quizLibraryList.add(quizLibrary1);
+        quizLibraryList.add(quizLibrary2);
 
 
         //Lista para Personas
@@ -56,7 +76,7 @@ public class Main {
             switch (option) {
                 case "1":
                     registerPerson(personList);
-                    print("The size of your dex is: " + personList.size());
+                    print("The size Person is: " + personList.size());
                     break;
                 default:
                     exit = true;
@@ -71,10 +91,10 @@ public class Main {
                 String optionQuiz = scanner.nextLine();
                 switch (optionQuiz) {
                     case "1":
-                        showQuiz(typeQuizPsic);
+                        showQuiz("Psicologico", quizLibraryList);
                         break;
                     case "2":
-                        showQuiz(typeQuizMath);
+                        showQuiz("Psicologico", quizLibraryList);
                         break;
                     default:
                         exit = true;
@@ -104,9 +124,26 @@ public class Main {
 
     }
 
-    private static void showQuiz(TypeQuiz typeQuiz) {
+    private static void showQuiz(String type, List<QuizLibrary> quizLibraryList) {
+
+        List<Quiz> quizListRes;
+        Quiz quiz;
+        for (QuizLibrary p : quizLibraryList) {
+
+            if (type.equals(p.getType())) {
+                quizListRes = p.getQuizList();
+                quiz = selectRandomQuiz(quizListRes);
+            }
+
+        }
 
         print("mostradndo pregunstas");
+    }
+
+    private static Quiz selectRandomQuiz(List<Quiz> quizList) {
+
+        return quizList.get(quizList.size() - 1);
+
     }
 
 

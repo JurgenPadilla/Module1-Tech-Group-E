@@ -8,6 +8,17 @@ class LiteralQuiz implements IQuestion {
 
     }
 
+    public void answer(String resp) {
+
+    }
+
+    public String display() {
+        return "";
+    }
+
+    public Integer evaluate() {
+        return 1;
+    }
 
 }
 

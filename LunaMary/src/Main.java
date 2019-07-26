@@ -39,7 +39,6 @@ public class Main {
         LiteralQuiz literalQuiz = new LiteralQuiz("Que opinas sobre la tecnologia");
 
 
-//        Quiz quiz = new Quiz()
 
         //Lista para Personas
         List<Person> personList = new ArrayList<Person>();

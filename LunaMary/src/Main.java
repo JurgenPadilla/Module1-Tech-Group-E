@@ -17,11 +17,11 @@ public class Main {
         TypeQuiz typeQuizMath = new TypeQuiz("Matematico");
 
 
-        Option option1 = new Option("Haces pasar a una chica que crees que baja después que tú…", 10, "A", false);
-        Option option2 = new Option("Te pones en un rincón", 10, "B", false);
+        Option option1 = new Option("Haces pasar a una chica que crees que baja después que tú…", 10, Sigla.A, false);
+        Option option2 = new Option("Te pones en un rincón", 10, Sigla.B, false);
 
-        Option option3 = new Option("Llamas a emergencias y procuras que la gente no se le agolpe", 10, "A", false);
-        Option option4 = new Option("Le preguntas lo que ha pasado", 10, "B", false);
+        Option option3 = new Option("Llamas a emergencias y procuras que la gente no se le agolpe", 10, Sigla.A, false);
+        Option option4 = new Option("Le preguntas lo que ha pasado", 10, Sigla.B, false);
 
 
         List<Option> optionList1 = new ArrayList<Option>();
@@ -37,6 +37,7 @@ public class Main {
         SelectedQuiz selectedQuiz2 = new SelectedQuiz("COMO TE COMPORTAS CUANDO TE ENCUENTRAS CON UNA PERSONA QUE SE HA ACCIDENTADO EN LA CALLE?", optionList2);
 
         LiteralQuiz literalQuiz = new LiteralQuiz("Que opinas sobre la tecnologia");
+
 
 
 

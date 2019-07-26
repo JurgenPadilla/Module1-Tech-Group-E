@@ -1,6 +1,6 @@
 import java.util.List;
 
-class LiteralQuiz {
+class LiteralQuiz implements IQuestion {
     private String title;
 
     public LiteralQuiz(String title) {

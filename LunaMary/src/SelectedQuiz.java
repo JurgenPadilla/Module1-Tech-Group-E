@@ -1,7 +1,7 @@
 import java.util.List;
 
 
-class SelectedQuiz {
+class SelectedQuiz implements IQuestion {
     private String title;
     private List<Option> optionList;
 

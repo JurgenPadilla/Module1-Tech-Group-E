@@ -1,12 +1,12 @@
 class Option {
     private String option;
     private Integer point;
-    private String sigla;
+    private Sigla sigla;
     private Boolean status;
 
     public Option(String option,
                   Integer point,
-                  String sigla,
+                  Sigla sigla,
                   Boolean status) {
 
         this.option = option;
@@ -32,11 +32,11 @@ class Option {
         this.point = point;
     }
 
-    public String getSigla() {
+    public Sigla getSigla() {
         return sigla;
     }
 
-    public void setSigla(String sigla) {
+    public void setSigla(Sigla sigla) {
         this.sigla = sigla;
     }
 

@@ -137,7 +137,6 @@ public class Main {
                     print(i.display());
                     String optionAnswer = scanner.nextLine();
                     i.saveAnswer(optionAnswer);
-                    print(optionAnswer);
                 }
             }
 

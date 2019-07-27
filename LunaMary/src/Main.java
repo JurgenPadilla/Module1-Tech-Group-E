@@ -1,4 +1,3 @@
-import java.net.SocketOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -133,6 +132,13 @@ public class Main {
             if (type.equals(p.getType())) {
                 quizListRes = p.getQuizList();
                 quiz = selectRandomQuiz(quizListRes);
+                List<IQuestion> lisIQuiz = quiz.getiQuestions();
+                for (IQuestion i : lisIQuiz) {
+                    print(i.display());
+                    String optionAnswer = scanner.nextLine();
+                    i.saveAnswer(optionAnswer);
+                    print(optionAnswer);
+                }
             }
 
         }

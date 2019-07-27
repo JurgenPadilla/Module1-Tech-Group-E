@@ -52,5 +52,19 @@ class SelectedQuiz implements IQuestion {
     public Integer evaluate() {
         return 1;
     }
+
+    @Override
+    public void saveAnswer(String resp) {
+        int i = 0;
+        while (i < optionList.size()) {
+            if (optionList.get(i).getSigla().equals(resp)) {
+                optionList.get(i).setStatus(true);
+                i = optionList.size();
+            } else
+                i++;
+        }
+
+
+    }
 }
 

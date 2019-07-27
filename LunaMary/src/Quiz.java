@@ -11,5 +11,13 @@ class Quiz {
         this.iQuestions = iQuestions;
         this.typeQuiz = typeQuiz;
     }
+
+    public List<IQuestion> getiQuestions() {
+        return iQuestions;
+    }
+
+    public TypeQuiz getTypeQuiz() {
+        return typeQuiz;
+    }
 }
 

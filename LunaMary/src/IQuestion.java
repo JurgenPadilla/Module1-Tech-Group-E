@@ -7,6 +7,8 @@ public interface IQuestion {
 
     public Integer evaluate();
 
+    public void saveAnswer(String resp);
+
 
 
 }

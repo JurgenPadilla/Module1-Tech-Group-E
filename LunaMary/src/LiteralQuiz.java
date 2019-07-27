@@ -1,5 +1,3 @@
-import java.util.List;
-
 class LiteralQuiz implements IQuestion {
     private String title;
 
@@ -18,6 +16,11 @@ class LiteralQuiz implements IQuestion {
 
     public Integer evaluate() {
         return 1;
+    }
+
+    @Override
+    public void saveAnswer(String resp) {
+
     }
 
 }

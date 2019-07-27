@@ -57,7 +57,7 @@ class SelectedQuiz implements IQuestion {
     public void saveAnswer(String resp) {
         int i = 0;
         while (i < optionList.size()) {
-            if (optionList.get(i).getSigla().equals(resp)) {
+            if (resp.equalsIgnoreCase(optionList.get(i).getSigla().toString())) {
                 optionList.get(i).setStatus(true);
                 i = optionList.size();
             } else

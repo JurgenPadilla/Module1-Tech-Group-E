@@ -9,6 +9,18 @@ public class Movie extends Story {
     private String releaseDate;
     private Book baseOn;
 
+    public Movie(String title, Genres genres, Book baseOn){
+        super(title,genres);
+        this.baseOn = baseOn;
+
+    }
+    public String display(){
+        String result = "Movie ";
+        result += getTitle() + "\n";
+        result += "and this movie Base on: " + getBaseOn();
+        return  result;
+    }
+
     public String getMainActor() {
         return mainActor;
     }

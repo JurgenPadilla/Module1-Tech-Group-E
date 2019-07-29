@@ -3,16 +3,13 @@ public class Story {
     private Genres genres;
     private String description;
 
-    public void setTitle(String title) {
+    public Story(String title, Genres genres) {
         this.title = title;
-    }
-
-    public void setGenres(Genres genres) {
         this.genres = genres;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Story(String title) {
+        this.title = title;
     }
 
     public String getTitle() {

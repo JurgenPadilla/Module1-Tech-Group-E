@@ -5,6 +5,15 @@ public class Book extends Story {
     private TypeBook type;
     private String lenguage;
 
+    public Book(String title, Genres genres, Author author, String lenguage){
+        super(title,genres);
+        this.author = author;
+        this.lenguage = lenguage;
+    }
+    public Book(String title,String lenguage){
+        super(title);
+        this.lenguage = lenguage;
+    }
     public void playBook() {
     }
 
@@ -14,6 +23,13 @@ public class Book extends Story {
 
     public void setCodeBook(Integer codeBook) {
         this.codeBook = codeBook;
+    }
+
+    public String display(){
+        String result = "Book ";
+        result += getTitle() + "\n";
+        result += "and has a language: " + getLenguage();
+        return  result;
     }
 
     public Author getAuthor() {
@@ -38,5 +54,13 @@ public class Book extends Story {
 
     public void setType(TypeBook type) {
         this.type = type;
+    }
+
+    public String getLenguage() {
+        return lenguage;
+    }
+
+    public String toString(){
+        return "Book [codeBook=\" + codeBook + \", author=\" + author + \", publishing=\" + publishing + \", type=\" + type + \", lenguage=\" + lenguage + \"]";
     }
 }

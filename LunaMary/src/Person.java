@@ -2,7 +2,7 @@ public class Person {
 
 
     private String nombre;
-    private String edad;
+    private Integer edad;
     private String sexo;
 
     public Person() {
@@ -17,11 +17,11 @@ public class Person {
         this.nombre = nombre;
     }
 
-    public String getAgePerson() {
+    public Integer getAgePerson() {
         return edad;
     }
 
-    public void setAgePerson(String edad) {
+    public void setAgePerson(Integer edad) {
         this.edad = edad;
     }
 

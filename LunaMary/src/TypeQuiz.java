@@ -1,5 +1,7 @@
 public class TypeQuiz {
 
+    private String name;
+
     public String getName() {
         return name;
     }
@@ -7,8 +9,6 @@ public class TypeQuiz {
     public void setName(String name) {
         this.name = name;
     }
-
-    String name;
 
     public TypeQuiz(String name) {
         this.name = name;

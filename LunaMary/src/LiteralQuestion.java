@@ -1,7 +1,7 @@
-class LiteralQuiz implements IQuestion {
+class LiteralQuestion implements IQuestion {
     private String title;
 
-    public LiteralQuiz(String title) {
+    public LiteralQuestion(String title) {
         this.title = title;
 
     }

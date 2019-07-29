@@ -32,16 +32,16 @@ public class Main {
         optionList2.add(option4);
 
 
-        SelectedQuiz selectedQuiz1 = new SelectedQuiz("COMO TE COMPORTAS CUANDO ENTRAS EN UN ASCENSOR?", optionList1);
-        SelectedQuiz selectedQuiz2 = new SelectedQuiz("COMO TE COMPORTAS CUANDO TE ENCUENTRAS CON UNA PERSONA QUE SE HA ACCIDENTADO EN LA CALLE?", optionList2);
+        MultipleChoiceQuestion multipleChoiceQuestion1 = new MultipleChoiceQuestion("COMO TE COMPORTAS CUANDO ENTRAS EN UN ASCENSOR?", optionList1);
+        MultipleChoiceQuestion multipleChoiceQuestion2 = new MultipleChoiceQuestion("COMO TE COMPORTAS CUANDO TE ENCUENTRAS CON UNA PERSONA QUE SE HA ACCIDENTADO EN LA CALLE?", optionList2);
 
-        LiteralQuiz literalQuiz = new LiteralQuiz("Que opinas sobre la tecnologia");
+        LiteralQuestion literalQuestion = new LiteralQuestion("Que opinas sobre la tecnologia");
 
         List<IQuestion> iQuestions1 = new ArrayList<IQuestion>();
-        iQuestions1.add(selectedQuiz1);
+        iQuestions1.add(multipleChoiceQuestion1);
 
         List<IQuestion> iQuestions2 = new ArrayList<IQuestion>();
-        iQuestions2.add(selectedQuiz2);
+        iQuestions2.add(multipleChoiceQuestion2);
 
         Quiz quiz1 = new Quiz(iQuestions1, typeQuizPsic);
         Quiz quiz2 = new Quiz(iQuestions2, typeQuizPsic);

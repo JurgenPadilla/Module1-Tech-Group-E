@@ -1,12 +1,12 @@
 import java.util.List;
 
 
-class SelectedQuiz implements IQuestion {
+class MultipleChoiceQuestion implements IQuestion {
 
     private String title;
     private List<Option> optionList;
 
-    public SelectedQuiz(String title, List<Option> optionList) {
+    public MultipleChoiceQuestion(String title, List<Option> optionList) {
         this.title = title;
         this.optionList = optionList;
     }
@@ -34,6 +34,7 @@ class SelectedQuiz implements IQuestion {
 
     public String display() {
 
+        // P1 automatico
         String result = "P1. " + getTitle() + "\n";
         result += displayOptions(optionList);
 

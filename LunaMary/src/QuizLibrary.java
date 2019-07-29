@@ -13,6 +13,10 @@ public class QuizLibrary {
         this.type = type;
     }
 
+    public QuizLibrary() {
+        this.quizList = null;
+    }
+
     public List<Quiz> getQuizList() {
         return quizList;
     }

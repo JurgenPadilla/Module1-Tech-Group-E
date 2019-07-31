@@ -1,14 +1,14 @@
-import java.util.List;
+import java.util.Map;
 
 
 class MultipleChoiceQuestion implements IQuestion {
 
     private String title;
-    private List<Option> optionList;
+    private Map<String, Option> optionMap;
 
-    public MultipleChoiceQuestion(String title, List<Option> optionList) {
+    public MultipleChoiceQuestion(String title, Map<String, Option> optionMap) {
         this.title = title;
-        this.optionList = optionList;
+        this.optionMap = optionMap;
     }
 
     public String getTitle() {
@@ -19,12 +19,8 @@ class MultipleChoiceQuestion implements IQuestion {
         this.title = title;
     }
 
-    public List<Option> getOptionList() {
-        return optionList;
-    }
-
-    public void setOptionList(List<Option> optionList) {
-        this.optionList = optionList;
+    public Map<String, Option> getOptionMap() {
+        return optionMap;
     }
 
 
@@ -36,12 +32,12 @@ class MultipleChoiceQuestion implements IQuestion {
 
         // P1 automatico
         String result = "P1. " + getTitle() + "\n";
-        result += displayOptions(optionList);
+        result += displayOptions(optionMap);
 
         return result;
     }
 
-    public String displayOptions(List<Option> optionList) {
+    public String displayOptions(Map<String, Option> optionMap) {
         String result = "";
         for (Option op : optionList) {
             result += " " + op.getSigla() + ": " + op.getOption() + "\n";

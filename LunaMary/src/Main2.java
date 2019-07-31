@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class Main {
+public class Main2 {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void print(String something) {
@@ -12,72 +12,52 @@ public class Main {
 
     public static void main(String[] args) {
 
+        TypeQuiz typeQuizPsic = new TypeQuiz("Psicologico");
+        TypeQuiz typeQuizMath = new TypeQuiz("Matematico");
 
-        Option option1 = new Option("11 Lados", 0);
-        Option option2 = new Option("7 lados", 0);
-        Option option3 = new Option("6 lados", 10);
 
-        Option option4 = new Option("0", 0);
-        Option option5 = new Option("1", 0);
-        Option option6 = new Option("0,01", 10);
+        Option option1 = new Option("Haces pasar a una chica que crees que baja después que tú…", 10, Sigla.A, false);
+        Option option2 = new Option("Te pones en un rincón", 10, Sigla.B, false);
 
-        Option option7 = new Option("Multiplicando por Dos", 0);
-        Option option8 = new Option("Sumando los lados", 10);
-        Option option9 = new Option("Lado al cuadrado", 0);
+        Option option3 = new Option("Llamas a emergencias y procuras que la gente no se le agolpe", 10, Sigla.A, false);
+        Option option4 = new Option("Le preguntas lo que ha pasado", 10, Sigla.B, false);
 
 
         List<Option> optionList1 = new ArrayList<Option>();
         optionList1.add(option1);
         optionList1.add(option2);
-        optionList1.add(option3);
 
         List<Option> optionList2 = new ArrayList<Option>();
+        optionList2.add(option3);
         optionList2.add(option4);
-        optionList2.add(option5);
-        optionList2.add(option6);
-
-        List<Option> optionList3 = new ArrayList<Option>();
-        optionList2.add(option7);
-        optionList2.add(option8);
-        optionList2.add(option9);
-
-        MultipleChoiceQuestion multipleChoiceQuestion1 = new MultipleChoiceQuestion("Cuantos lados tiene un Hexagono?", optionList1);
-        MultipleChoiceQuestion multipleChoiceQuestion2 = new MultipleChoiceQuestion("Todo Numero Multiplicado por 0 nos da?", optionList2);
-        MultipleChoiceQuestion multipleChoiceQuestion3 = new MultipleChoiceQuestion("El perimetro de un poligono se obtiene?", optionList3);
 
 
-        List<IQuestion> iQuestionsMath1 = new ArrayList<IQuestion>();
-        iQuestionsMath1.add(multipleChoiceQuestion1);
-        iQuestionsMath1.add(multipleChoiceQuestion2);
-        iQuestionsMath1.add(multipleChoiceQuestion3);
+        MultipleChoiceQuestion multipleChoiceQuestion1 = new MultipleChoiceQuestion("COMO TE COMPORTAS CUANDO ENTRAS EN UN ASCENSOR?", optionList1);
+        MultipleChoiceQuestion multipleChoiceQuestion2 = new MultipleChoiceQuestion("COMO TE COMPORTAS CUANDO TE ENCUENTRAS CON UNA PERSONA QUE SE HA ACCIDENTADO EN LA CALLE?", optionList2);
 
-        Quiz quizMath1 = new Quiz(iQuestionsMath1, 20);
+        LiteralQuestion literalQuestion = new LiteralQuestion("Que opinas sobre la tecnologia");
 
-        //Pregunta literal
-        LiteralQuestion literalQuestion1 = new LiteralQuestion("cuantos lados tiene un cuadrado?");
-        LiteralQuestion literalQuestion2 = new LiteralQuestion("Que figuras geometricas conoces?");
+        List<IQuestion> iQuestions1 = new ArrayList<IQuestion>();
+        iQuestions1.add(multipleChoiceQuestion1);
 
-        List<IQuestion> iQuestionsMath2 = new ArrayList<IQuestion>();
-        iQuestionsMath1.add(literalQuestion1);
-        iQuestionsMath1.add(literalQuestion2);
+        List<IQuestion> iQuestions2 = new ArrayList<IQuestion>();
+        iQuestions2.add(multipleChoiceQuestion2);
 
-        Quiz quizMath2 = new Quiz(iQuestionsMath2, 7);
+        Quiz quiz1 = new Quiz(iQuestions1, typeQuizPsic);
+        Quiz quiz2 = new Quiz(iQuestions2, typeQuizPsic);
 
-
-        List<Quiz> quizListMath = new ArrayList<Quiz>();
-        quizListMath.add(quizMath1);
-        quizListMath.add(quizMath2);
-
-        QuizLibrary quizLibraryMath = new QuizLibrary(quizListMath, "Matematico");
-        QuizLibrary quizLibraryHist = new QuizLibrary();
-        QuizLibrary quizLibraryBio = new QuizLibrary();
-
-        List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
-        quizLibraryList.add(quizLibraryMath);
-        quizLibraryList.add(quizLibraryHist);
-        quizLibraryList.add(quizLibraryBio);
+        List<Quiz> quizList = new ArrayList<Quiz>();
+        quizList.add(quiz1);
+        quizList.add(quiz2);
 
         List<AnswerPerson> answerPeople = new ArrayList<AnswerPerson>();
+
+        QuizLibrary quizLibrary1 = new QuizLibrary(quizList, answerPeople, "Psicologico");
+        QuizLibrary quizLibrary2 = new QuizLibrary(quizList, answerPeople, "Matematico");
+
+        List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
+        quizLibraryList.add(quizLibrary1);
+        quizLibraryList.add(quizLibrary2);
 
 
         //Lista para Personas

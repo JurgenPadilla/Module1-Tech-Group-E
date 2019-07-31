@@ -1,8 +1,6 @@
 class Option {
     private String option;
     private Integer point;
-    private Sigla sigla;
-    private Boolean status;
 
     public Option(String option,
                   Integer point,
@@ -11,8 +9,7 @@ class Option {
 
         this.option = option;
         this.point = point;
-        this.sigla = sigla;
-        this.status = status;
+
     }
 
 
@@ -31,23 +28,6 @@ class Option {
     public void setPoint(Integer point) {
         this.point = point;
     }
-
-    public Sigla getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(Sigla sigla) {
-        this.sigla = sigla;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
 
 
 }

@@ -29,6 +29,7 @@ public class Person {
         return sexo;
     }
 
+
     public void setSexPerson(String sexo) {
         this.sexo = sexo;
     }

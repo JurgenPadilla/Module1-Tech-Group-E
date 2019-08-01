@@ -11,17 +11,17 @@ public class Main {
     public static void main(String[] args) {
 
 
-        Option option1 = new Option("11 Lados", 0);
-        Option option2 = new Option("7 lados", 0);
-        Option option3 = new Option("6 lados", 10);
+        Option option1 = new Option("11 Lados", 5);
+        Option option2 = new Option("7 lados", 10);
+        Option option3 = new Option("6 lados", 15);
 
-        Option option4 = new Option("0", 0);
-        Option option5 = new Option("1", 0);
-        Option option6 = new Option("0,01", 10);
+        Option option4 = new Option("0", 20);
+        Option option5 = new Option("1", 25);
+        Option option6 = new Option("0,01", 30);
 
-        Option option7 = new Option("Multiplicando por Dos", 0);
-        Option option8 = new Option("Sumando los lados", 10);
-        Option option9 = new Option("Lado al cuadrado", 0);
+        Option option7 = new Option("Multiplicando por Dos", 1);
+        Option option8 = new Option("Sumando los lados", 2);
+        Option option9 = new Option("Lado al cuadrado", 3);
 
 
         Map<String, Option> mapOption1 = new HashMap<String, Option>();
@@ -56,8 +56,8 @@ public class Main {
         LiteralQuestion literalQuestion2 = new LiteralQuestion("Que figuras geometricas conoces?");
 
         List<IQuestion> iQuestionsMath2 = new ArrayList<IQuestion>();
-        iQuestionsMath1.add(literalQuestion1);
-        iQuestionsMath1.add(literalQuestion2);
+        iQuestionsMath2.add(literalQuestion1);
+        iQuestionsMath2.add(literalQuestion2);
 
         Quiz quizMath2 = new Quiz(iQuestionsMath2, 7);
 
@@ -81,6 +81,8 @@ public class Main {
         //Lista para Personas
         List<Person> personList = new ArrayList<Person>();
 
+        //List para respuestas
+        List<AnswerPerson> answers = new ArrayList<AnswerPerson>();
 
         List<String> areaQuiz = new ArrayList<String>();
         for (QuizLibrary p : quizLibraryList) {
@@ -100,7 +102,7 @@ public class Main {
             String option = scanner.nextLine();
             switch (option) {
                 case "1":
-                    registerPerson(personList);
+                    registerPerson(personList, answers);
                     print("The size Person is: " + personList.size());
                     break;
                 case "2":
@@ -124,10 +126,10 @@ public class Main {
                 String optionQuiz = scanner.nextLine();
                 switch (optionQuiz) {
                     case "1":
-                        showQuiz("Matematico", quizLibraryList);
+                        showQuiz("Matematico", quizLibraryList, answers);
                         break;
                     case "2":
-                        showQuiz("Psicologico", quizLibraryList);
+                        showQuiz("Psicologico", quizLibraryList, answers);
                         break;
                     default:
                         exit = true;
@@ -141,7 +143,7 @@ public class Main {
     }
 
 
-    private static void registerPerson(List<Person> personList) {
+    private static void registerPerson(List<Person> personList, List<AnswerPerson> answerPersonList) {
         print("Ingresa tu nombre? ");
         String name = scanner.nextLine();
         print("Ingresa tu edad? ");
@@ -154,24 +156,28 @@ public class Main {
         person.setAgePerson(age);
         person.setSexPerson(sex);
         personList.add(person);
+        AnswerPerson answerPerson = new AnswerPerson(null, person);
+        answerPersonList.add(answerPerson);
 
     }
 
-    private static void showQuiz(String type, List<QuizLibrary> quizLibraryList) {
+    private static void showQuiz(String type, List<QuizLibrary> quizLibraryList, List<AnswerPerson> answerPersonList) {
 
         List<Quiz> quizListRes;
         Quiz quiz;
         for (QuizLibrary p : quizLibraryList) {
-
             if (type.equals(p.getType())) {
                 quizListRes = p.getQuizList();
-                quiz = quizListRes.get(0);
+                quiz = selectRandomQuiz(quizListRes);
+                answerPersonList.get(answerPersonList.size() - 1).setQuiz(quiz);
                 List<IQuestion> iQuestionList = quiz.getiQuestions();
                 for (IQuestion i : iQuestionList) {
                     print(i.display());
                     String optionAnswer = scanner.nextLine();
-                    i.saveAnswer(optionAnswer);
+                    answerPersonList.get(answerPersonList.size() - 1).saveNota(i.getNotaAnswer(optionAnswer));
+                    System.out.println("nota seleccionad: " + i.getNotaAnswer(optionAnswer));
                 }
+                System.out.println("notaaaa: " + answerPersonList.get(answerPersonList.size() - 1).getNota());
             }
 
         }
@@ -179,11 +185,12 @@ public class Main {
         print("mostradndo pregunstas");
     }
 
-//    private static Quiz selectRandomQuiz(List<Quiz> quizList) {
-//
-//        return quizList.get(quizList.size() - 1);
-//
-//    }
+    private static Quiz selectRandomQuiz(List<Quiz> quizList) {
+        Integer cant = new Integer((int) (Math.random() * quizList.size()));
+
+        return quizList.get(cant);
+
+    }
 
 
 }

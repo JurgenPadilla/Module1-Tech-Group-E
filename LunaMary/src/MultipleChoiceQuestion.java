@@ -1,4 +1,3 @@
-import java.security.Key;
 import java.util.Map;
 
 
@@ -65,5 +64,21 @@ class MultipleChoiceQuestion implements IQuestion {
 
 
     }
+
+    public Integer getNotaAnswer(String resp) {
+        Integer value = new Integer(0);
+        int i = 0;
+
+        while (i < optionMap.size()) {
+            if (optionMap.containsKey(resp.toUpperCase())) {
+                value = optionMap.get(resp.toUpperCase()).getPoint();
+                i = optionMap.size();
+            } else
+                i++;
+        }
+        return value;
+    }
+
+
 }
 

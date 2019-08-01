@@ -9,6 +9,11 @@ public interface IQuestion {
 
     public void saveAnswer(String resp);
 
+    public Integer getNotaAnswer(String resp);
+
+
+
+
 
 
 }

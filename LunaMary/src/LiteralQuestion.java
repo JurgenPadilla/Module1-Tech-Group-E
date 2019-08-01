@@ -23,5 +23,8 @@ class LiteralQuestion implements IQuestion {
 
     }
 
+    public Integer getNotaAnswer(String resp) {
+        return 0;
+    }
 }
 

@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -26,24 +24,24 @@ public class Main {
         Option option9 = new Option("Lado al cuadrado", 0);
 
 
-        List<Option> optionList1 = new ArrayList<Option>();
-        optionList1.add(option1);
-        optionList1.add(option2);
-        optionList1.add(option3);
+        Map<String, Option> mapOption1 = new HashMap<String, Option>();
+        mapOption1.put("A", option1);
+        mapOption1.put("B", option2);
+        mapOption1.put("C", option3);
 
-        List<Option> optionList2 = new ArrayList<Option>();
-        optionList2.add(option4);
-        optionList2.add(option5);
-        optionList2.add(option6);
+        Map<String, Option> mapOption2 = new HashMap<String, Option>();
+        mapOption2.put("A", option4);
+        mapOption2.put("B", option5);
+        mapOption2.put("C", option6);
 
-        List<Option> optionList3 = new ArrayList<Option>();
-        optionList2.add(option7);
-        optionList2.add(option8);
-        optionList2.add(option9);
+        Map<String, Option> mapOption3 = new HashMap<String, Option>();
+        mapOption3.put("A", option7);
+        mapOption3.put("B", option8);
+        mapOption3.put("C", option9);
 
-        MultipleChoiceQuestion multipleChoiceQuestion1 = new MultipleChoiceQuestion("Cuantos lados tiene un Hexagono?", optionList1);
-        MultipleChoiceQuestion multipleChoiceQuestion2 = new MultipleChoiceQuestion("Todo Numero Multiplicado por 0 nos da?", optionList2);
-        MultipleChoiceQuestion multipleChoiceQuestion3 = new MultipleChoiceQuestion("El perimetro de un poligono se obtiene?", optionList3);
+        MultipleChoiceQuestion multipleChoiceQuestion1 = new MultipleChoiceQuestion("Cuantos lados tiene un Hexagono?", mapOption1);
+        MultipleChoiceQuestion multipleChoiceQuestion2 = new MultipleChoiceQuestion("Todo Numero Multiplicado por 0 nos da?", mapOption2);
+        MultipleChoiceQuestion multipleChoiceQuestion3 = new MultipleChoiceQuestion("El perimetro de un poligono se obtiene?", mapOption3);
 
 
         List<IQuestion> iQuestionsMath1 = new ArrayList<IQuestion>();
@@ -83,6 +81,13 @@ public class Main {
         //Lista para Personas
         List<Person> personList = new ArrayList<Person>();
 
+
+        List<String> areaQuiz = new ArrayList<String>();
+        for (QuizLibrary p : quizLibraryList) {
+            String res = p.getType();
+            areaQuiz.add(res);
+        }
+
         boolean exit = false;
         print("Welcome to your Quiz");
 
@@ -90,12 +95,16 @@ public class Main {
 
             print("Please enter an option");
             print("1. Register yourself");
-            print("2. Exit");
+            print("2. Administrar");
+            print("3. Exit");
             String option = scanner.nextLine();
             switch (option) {
                 case "1":
                     registerPerson(personList);
                     print("The size Person is: " + personList.size());
+                    break;
+                case "2":
+                    print("En construccion");
                     break;
                 default:
                     exit = true;
@@ -103,14 +112,19 @@ public class Main {
 
 
             while (!exit) {
+
+
+
                 print("Please select a new Quiz");
-                print("1. Psicologico");
-                print("2. Matematico");
-                print("2. Exit");
+                for (int i = 0; i < areaQuiz.size(); i++) {
+                    print("" + (i + 1) + ". " + areaQuiz.get(i));
+                }
+                print("" + (areaQuiz.size() + 1) + ". " + "Exit");
+
                 String optionQuiz = scanner.nextLine();
                 switch (optionQuiz) {
                     case "1":
-                        showQuiz("Psicologico", quizLibraryList);
+                        showQuiz("Matematico", quizLibraryList);
                         break;
                     case "2":
                         showQuiz("Psicologico", quizLibraryList);
@@ -131,7 +145,7 @@ public class Main {
         print("Ingresa tu nombre? ");
         String name = scanner.nextLine();
         print("Ingresa tu edad? ");
-        String age = scanner.nextLine();
+        Integer age = Integer.valueOf(scanner.nextLine());
         print("Ingresa tu sexo  Ejemplo: F  o  M ? ");
         String sex = scanner.nextLine();
 
@@ -151,9 +165,9 @@ public class Main {
 
             if (type.equals(p.getType())) {
                 quizListRes = p.getQuizList();
-                quiz = selectRandomQuiz(quizListRes);
-                List<IQuestion> lisIQuiz = quiz.getiQuestions();
-                for (IQuestion i : lisIQuiz) {
+                quiz = quizListRes.get(0);
+                List<IQuestion> iQuestionList = quiz.getiQuestions();
+                for (IQuestion i : iQuestionList) {
                     print(i.display());
                     String optionAnswer = scanner.nextLine();
                     i.saveAnswer(optionAnswer);
@@ -165,11 +179,11 @@ public class Main {
         print("mostradndo pregunstas");
     }
 
-    private static Quiz selectRandomQuiz(List<Quiz> quizList) {
-
-        return quizList.get(quizList.size() - 1);
-
-    }
+//    private static Quiz selectRandomQuiz(List<Quiz> quizList) {
+//
+//        return quizList.get(quizList.size() - 1);
+//
+//    }
 
 
 }

@@ -1,3 +1,4 @@
+import java.security.Key;
 import java.util.Map;
 
 
@@ -30,7 +31,6 @@ class MultipleChoiceQuestion implements IQuestion {
 
     public String display() {
 
-        // P1 automatico
         String result = "P1. " + getTitle() + "\n";
         result += displayOptions(optionMap);
 
@@ -39,8 +39,10 @@ class MultipleChoiceQuestion implements IQuestion {
 
     public String displayOptions(Map<String, Option> optionMap) {
         String result = "";
-        for (Option op : optionList) {
-            result += " " + op.getSigla() + ": " + op.getOption() + "\n";
+        for (Map.Entry<String, Option> entry : optionMap.entrySet()) {
+            String sigla = entry.getKey();
+            Option option = entry.getValue();
+            result += " " + sigla + ": " + option.getOption() + "\n";
         }
 
         return result;
@@ -53,13 +55,13 @@ class MultipleChoiceQuestion implements IQuestion {
     @Override
     public void saveAnswer(String resp) {
         int i = 0;
-        while (i < optionList.size()) {
-            if (resp.equalsIgnoreCase(optionList.get(i).getSigla().toString())) {
-                optionList.get(i).setStatus(true);
-                i = optionList.size();
-            } else
-                i++;
-        }
+//        while (i < optionList.size()) {
+//            if (resp.equalsIgnoreCase(optionList.get(i).getSigla().toString())) {
+//                optionList.get(i).setStatus(true);
+//                i = optionList.size();
+//            } else
+//                i++;
+//        }
 
 
     }

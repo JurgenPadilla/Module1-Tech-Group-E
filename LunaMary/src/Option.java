@@ -3,9 +3,8 @@ class Option {
     private Integer point;
 
     public Option(String option,
-                  Integer point,
-                  Sigla sigla,
-                  Boolean status) {
+                  Integer point
+    ) {
 
         this.option = option;
         this.point = point;

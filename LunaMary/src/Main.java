@@ -122,14 +122,16 @@ public class Main {
                     print("" + (i + 1) + ". " + areaQuiz.get(i));
                 }
                 print("" + (areaQuiz.size() + 1) + ". " + "Exit");
-
+                System.out.print("Option: ");
                 String optionQuiz = scanner.nextLine();
+                System.out.println();
                 switch (optionQuiz) {
                     case "1":
                         showQuiz("Matematico", quizLibraryList, answers);
                         break;
                     case "2":
                         showQuiz("Psicologico", quizLibraryList, answers);
+
                         break;
                     default:
                         exit = true;
@@ -169,26 +171,34 @@ public class Main {
             if (type.equals(p.getType())) {
                 quizListRes = p.getQuizList();
                 quiz = selectRandomQuiz(quizListRes);
-                answerPersonList.get(answerPersonList.size() - 1).setQuiz(quiz);
+                if (null == answerPersonList.get(answerPersonList.size() - 1).getQuiz()) {
+                    answerPersonList.get(answerPersonList.size() - 1).setQuiz(quiz);
+                } else {
+                    Person person = answerPersonList.get(answerPersonList.size() - 1).getPerson();
+                    answerPersonList.add(new AnswerPerson(quiz, person));
+                }
+
                 List<IQuestion> iQuestionList = quiz.getiQuestions();
                 for (IQuestion i : iQuestionList) {
-                    print(i.display());
+                    System.out.print(i.display());
+                    System.out.print("Answer: ");
                     String optionAnswer = scanner.nextLine();
+                    System.out.println();
                     answerPersonList.get(answerPersonList.size() - 1).saveNota(i.getNotaAnswer(optionAnswer));
-                    System.out.println("nota seleccionad: " + i.getNotaAnswer(optionAnswer));
                 }
-                System.out.println("notaaaa: " + answerPersonList.get(answerPersonList.size() - 1).getNota());
+                System.out.println("Nota: " + answerPersonList.get(answerPersonList.size() - 1).getNota());
             }
 
         }
 
-        print("mostradndo pregunstas");
+        print("mostrando pregunstas");
+        System.out.println();
     }
 
     private static Quiz selectRandomQuiz(List<Quiz> quizList) {
         Integer cant = new Integer((int) (Math.random() * quizList.size()));
 
-        return quizList.get(cant);
+        return quizList.get(cant * 0);
 
     }
 

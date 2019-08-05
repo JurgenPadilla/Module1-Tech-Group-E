@@ -1,4 +1,4 @@
-package com.project.marketordering.person;
+package projectmarket.person;
 
 public class Empleado extends Persona {
 }

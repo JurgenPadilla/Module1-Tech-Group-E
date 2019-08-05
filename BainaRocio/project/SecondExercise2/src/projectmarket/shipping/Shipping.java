@@ -1,6 +1,6 @@
-package com.project.marketordering.shipping;
+package projectmarket.shipping;
 
-import com.project.marketordering.person.Empleado;
+import projectmarket.person.Empleado;
 
 public class Shipping {
     private ShippingType type;

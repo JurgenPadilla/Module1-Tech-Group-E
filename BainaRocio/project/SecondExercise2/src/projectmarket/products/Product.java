@@ -22,7 +22,7 @@ public class Product {
     }
 
     public ArrayList<Integer> selectProducts() throws Exception {
-        System.out.println("Enter a number to select a Product by 'Product ID'/press enter to skip");
+        System.out.println("Enter a number to select a Product by 'Product ID'/press a letter to skip");
         selectedProduct = new ArrayList<Integer>();
         Scanner scannerConsole = new Scanner(System.in);
         while (scannerConsole.hasNextInt()) {
@@ -35,11 +35,10 @@ public class Product {
         String[] productData;
         File importFile = new File(selectedMerchantId + "_product.txt");
         Scanner scanner = new Scanner(importFile);
-        System.out.println("Product ID, productName, unit Price, available, unit, office");
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             productData = line.split(",");
-            if (productId == Integer.getInteger(productData[0])) {
+            if (new Integer(productData[0]).compareTo(productId)==0) {
                 return productData;
             }
         }

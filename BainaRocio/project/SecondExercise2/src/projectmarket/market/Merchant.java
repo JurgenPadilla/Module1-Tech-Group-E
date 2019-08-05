@@ -31,7 +31,7 @@ public class Merchant {
         while (scanner.hasNextLine()){
             String line = scanner.nextLine();
             merchantData = line.split(",");
-            if (Integer.getInteger(merchantData[0]) == merchantId){
+            if (new Integer(merchantData[0]).compareTo(merchantId) == 0){
                 return merchantData;
             }
         }

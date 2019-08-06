@@ -2,6 +2,10 @@ import java.util.*;
 
 
 public class Main {
+
+    private static Util util = new Util();
+    private static List<Quiz> quizListSelected;
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static void print(String something) {
@@ -67,13 +71,9 @@ public class Main {
         quizListMath.add(quizMath2);
 
         QuizLibrary quizLibraryMath = new QuizLibrary(quizListMath, "Matematico");
-        QuizLibrary quizLibraryHist = new QuizLibrary();
-        QuizLibrary quizLibraryBio = new QuizLibrary();
 
         List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
         quizLibraryList.add(quizLibraryMath);
-        quizLibraryList.add(quizLibraryHist);
-        quizLibraryList.add(quizLibraryBio);
 
         List<AnswerPerson> answerPeople = new ArrayList<AnswerPerson>();
 
@@ -96,49 +96,99 @@ public class Main {
         while (!exit) {
 
             print("Please enter an option");
-            print("1. Register yourself");
-            print("2. Administrar");
+            print("1. Start quiz");
+            print("2. Manage");
             print("3. Exit");
-            String option = scanner.nextLine();
+            Integer option = Integer.valueOf(scanner.nextLine());
+            if (option == 1) {
+                print("Register yourself");
+
+            } else {
+
+                if (option == 2) {
+                    print("Please select a type Quiz");
+
+                }
+
+            }
+
             switch (option) {
-                case "1":
+                case 1:
                     registerPerson(personList, answers);
                     print("The size Person is: " + personList.size());
+
+
+                    for (QuizLibrary p : quizLibraryList) {
+                        String res = p.getType();
+                        areaQuiz.add(res);
+                    }
+
+                    print("Please select a new Quiz");
+                    for (int i = 0; i < areaQuiz.size(); i++) {
+                        print("" + (i + 1) + ". " + areaQuiz.get(i));
+                    }
+
+                    print("" + (areaQuiz.size() + 1) + ". " + "Exit");
+
+                    Integer lastOption1 = Integer.valueOf(String.valueOf((areaQuiz.size() + 1)));
+                    Integer optionQuiz = Integer.valueOf(scanner.nextLine());
+
+                    String optionSelect1 = areaQuiz.get(optionQuiz - 1);
+
+                    for (QuizLibrary p : quizLibraryList) {
+                        String res = p.getType();
+                        if (res == optionSelect1) {
+                            quizListSelected = p.getQuizList();
+                        }
+                    }
+
+
+                    if (optionQuiz == lastOption1) {
+                        print("Gracias hasta la proxima!");
+
+                    } else {
+                        String optionSelect = areaQuiz.get(optionQuiz - 1);
+
+
+                        showQuiz(optionSelect, quizLibraryList, answers);
+                    }
+
+
                     break;
-                case "2":
-                    print("En construccion");
+                case 2:
+
+                    for (int i = 0; i < areaQuiz.size(); i++) {
+                        print("" + (i + 1) + ". " + areaQuiz.get(i));
+                    }
+
+                    Integer lastOption = Integer.valueOf(String.valueOf((areaQuiz.size() + 1)));
+                    print(lastOption + ". " + "New Type");
+                    Integer typeQuiz = Integer.valueOf(scanner.nextLine());
+                    if (typeQuiz == lastOption) {
+                        print("Enter new type example: English");
+                        String newTypeQuiz = scanner.nextLine();
+                        createNewCollectionQuiz(newTypeQuiz);
+                    } else {
+                        String optionSelect = areaQuiz.get(typeQuiz - 1);
+                        List<Quiz> quizList = null;
+                        for (QuizLibrary p : quizLibraryList) {
+                            String res = p.getType();
+                            if (res == optionSelect) {
+                                quizList = p.getQuizList();
+                            }
+                        }
+
+
+                        AddNewQuizToCollection(quizList);
+                    }
+
+
                     break;
                 default:
                     exit = true;
             }
 
 
-            while (!exit) {
-
-
-
-                print("Please select a new Quiz");
-                for (int i = 0; i < areaQuiz.size(); i++) {
-                    print("" + (i + 1) + ". " + areaQuiz.get(i));
-                }
-                print("" + (areaQuiz.size() + 1) + ". " + "Exit");
-                System.out.print("Option: ");
-                String optionQuiz = scanner.nextLine();
-                System.out.println();
-                switch (optionQuiz) {
-                    case "1":
-                        showQuiz("Matematico", quizLibraryList, answers);
-                        break;
-                    case "2":
-                        showQuiz("Psicologico", quizLibraryList, answers);
-
-                        break;
-                    default:
-                        exit = true;
-                }
-
-
-            }
         }
 
 
@@ -195,10 +245,77 @@ public class Main {
         System.out.println();
     }
 
+    private static Quiz createNewQuiz(Integer limit) {
+
+        Integer countQuestions = readInteger("Ingrese cantidad de preguntas que desea añadir");
+        List<IQuestion> iQuestionsList = new ArrayList<IQuestion>();
+        for (int j = 0; j < countQuestions; j++) {
+            String newOptionAnswer = readString("Añada la pregunta No. " + (j + 1) + " para este Quiz.");
+
+            Map<String, Option> mapOption = new HashMap<String, Option>();
+            Integer countOptions = readInteger("Ingrese la cantidad de opciones para esta preguntas que desea añadir");
+            for (int h = 0; h < countOptions; h++) {
+
+                Option option = new Option(readString("Añada una opcion"), readInteger("Añada un puntaje para esta opcion"));
+                char sigla = util.generateSigla(h);
+                mapOption.put(String.valueOf(sigla), option);
+
+
+            }
+            IQuestion iQuestion =
+                    new MultipleChoiceQuestion(newOptionAnswer, mapOption);
+            iQuestionsList.add(iQuestion);
+        }
+        Quiz newQuiz = new Quiz(iQuestionsList, limit);
+        return newQuiz;
+    }
+
+
+    private static void createNewCollectionQuiz(String type) {
+        print("creando nueva coleccion");
+        Integer limit = readInteger("Ingrese una edad minima requerida para este quiz");
+        Quiz quizNew = createNewQuiz(limit);
+
+        List<Quiz> quizListNew = new ArrayList<Quiz>();
+        quizListNew.add(quizNew);
+
+
+        QuizLibrary newQuizLibrary = new QuizLibrary(quizListNew, type);
+
+        List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
+        quizLibraryList.add(newQuizLibrary);
+
+
+    }
+
+    private static void AddNewQuizToCollection(List<Quiz> list) {
+        print("anadiendo nueva quiz coleccion");
+        List<Quiz> quizList = list;
+        Integer limit = readInteger("Ingrese una edad minima requerida para este quiz");
+        Quiz quizNew = createNewQuiz(limit);
+        quizList.add(quizNew);
+
+
+    }
+
     private static Quiz selectRandomQuiz(List<Quiz> quizList) {
-        Integer cant = new Integer((int) (Math.random() * quizList.size()));
+        Integer cant = (int) (Math.random() * quizList.size());
 
         return quizList.get(cant * 0);
+
+    }
+
+    static String readString(String text) {
+        print(text);
+        String option = scanner.nextLine();
+        return option;
+    }
+
+    static Integer readInteger(String text) {
+        print(text);
+        Integer score = Integer.valueOf(scanner.nextLine());
+        return score;
+
 
     }
 

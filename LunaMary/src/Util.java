@@ -16,4 +16,10 @@ public class Util {
         return textValid;
     }
 
+     public static char generateSigla(Integer num) {
+        char sigla = 'A';
+        sigla = (char) ('A' + num);
+        return sigla;
+    }
+
 }

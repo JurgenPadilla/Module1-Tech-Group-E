@@ -35,7 +35,7 @@ class MultipleChoiceQuestion implements IQuestion {
 
     public String display() {
 
-        String result = "P1. " + getTitle() + "\n";
+        String result = "P. " + getTitle() + "\n";
         result += displayOptions(optionMap);
 
         return result;

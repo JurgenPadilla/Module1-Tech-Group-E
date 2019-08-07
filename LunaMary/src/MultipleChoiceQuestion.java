@@ -11,6 +11,11 @@ class MultipleChoiceQuestion implements IQuestion {
         this.optionMap = optionMap;
     }
 
+    public MultipleChoiceQuestion(String title) {
+        this.title = title;
+        this.optionMap = null;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -79,6 +84,8 @@ class MultipleChoiceQuestion implements IQuestion {
         return value;
     }
 
-
+    public void setOptionMap(Map<String, Option> optionMap) {
+        this.optionMap = optionMap;
+    }
 }
 

@@ -49,6 +49,7 @@ public class Main {
 
 
         List<IQuestion> iQuestionsMath1 = new ArrayList<IQuestion>();
+        //registrarListQuiz(iQuestionsMath1);
         iQuestionsMath1.add(multipleChoiceQuestion1);
         iQuestionsMath1.add(multipleChoiceQuestion2);
         iQuestionsMath1.add(multipleChoiceQuestion3);
@@ -67,6 +68,8 @@ public class Main {
 
 
         List<Quiz> quizListMath = new ArrayList<Quiz>();
+
+
         quizListMath.add(quizMath1);
         quizListMath.add(quizMath2);
 
@@ -120,7 +123,7 @@ public class Main {
 
                     for (QuizLibrary p : quizLibraryList) {
                         String res = p.getType();
-                        areaQuiz.add(res);
+                        // areaQuiz.add(res);
                     }
 
                     print("Please select a new Quiz");
@@ -167,7 +170,7 @@ public class Main {
                     if (typeQuiz == lastOption) {
                         print("Enter new type example: English");
                         String newTypeQuiz = scanner.nextLine();
-                        createNewCollectionQuiz(newTypeQuiz);
+                        createNewCollectionQuiz(newTypeQuiz, areaQuiz, quizLibraryList);
                     } else {
                         String optionSelect = areaQuiz.get(typeQuiz - 1);
                         List<Quiz> quizList = null;
@@ -271,7 +274,7 @@ public class Main {
     }
 
 
-    private static void createNewCollectionQuiz(String type) {
+    private static void createNewCollectionQuiz(String type, List<String> listsAreaQuiz, List<QuizLibrary> listLibrary) {
         print("creando nueva coleccion");
         Integer limit = readInteger("Ingrese una edad minima requerida para este quiz");
         Quiz quizNew = createNewQuiz(limit);
@@ -282,8 +285,8 @@ public class Main {
 
         QuizLibrary newQuizLibrary = new QuizLibrary(quizListNew, type);
 
-        List<QuizLibrary> quizLibraryList = new ArrayList<QuizLibrary>();
-        quizLibraryList.add(newQuizLibrary);
+        listLibrary.add(newQuizLibrary);
+        listsAreaQuiz.add(type);
 
 
     }
@@ -317,6 +320,41 @@ public class Main {
         return score;
 
 
+    }
+
+    static MultipleChoiceQuestion registerMultipleChoiceQuestion() {
+        print("Ingrese el titulo de la pregunta: ");
+        String title = scanner.nextLine();
+        Boolean quit = new Boolean("true");
+        print("Ingrese las opciones de respuesta para la pregunta: ");
+        Integer i = new Integer(0);
+        Map<String, Option> mapOptions = new HashMap<String, Option>();
+        while (quit) {
+            System.out.print("Ingrese la opcion " + util.generateSigla(i) + " : ");
+            String op = scanner.nextLine();
+            System.out.print("Ingrese su puntaje: ");
+            Integer value = new Integer((int) (scanner.nextInt()));
+            Option option = new Option(op, value);
+            mapOptions.put(util.generateSigla(i) + "", option);
+            i++;
+            System.out.print("Desea salir del registro de opciones(si(s)/no(n))? ");
+            String resp = scanner.nextLine();
+            quit = ("s".equalsIgnoreCase(resp)) ? true : false;
+
+        }
+        MultipleChoiceQuestion question = new MultipleChoiceQuestion(title, mapOptions);
+        System.out.println();
+        return question;
+    }
+
+    public static void registrarListQuiz(List<IQuestion> listQ) {
+        Boolean respList = new Boolean("true");
+        while (respList) {
+            listQ.add(registerMultipleChoiceQuestion());
+            // System.out.print("Desea salir del registro de preguntas(si(s)/no(n))? ");
+            // String resp = scanner.nextLine();
+            // respList= ("s".equalsIgnoreCase(resp))?true:false;
+        }
     }
 
 

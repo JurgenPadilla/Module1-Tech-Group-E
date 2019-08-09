@@ -1,7 +1,7 @@
 public class AnswerPerson {
     private Quiz quiz;
     private Person person;
-    private Integer nota = new Integer(0);
+    private Integer score = new Integer(0);
 
     public AnswerPerson(Quiz quiz, Person person) {
         this.quiz = quiz;
@@ -14,12 +14,12 @@ public class AnswerPerson {
     }
 
 
-    public void saveNota(Integer nota) {
-        this.nota = this.nota + nota;
+    public void saveNota(Integer score) {
+        this.score = this.score + score;
     }
 
     public Integer getNota() {
-        return nota;
+        return score;
     }
 
     public Quiz getQuiz() {

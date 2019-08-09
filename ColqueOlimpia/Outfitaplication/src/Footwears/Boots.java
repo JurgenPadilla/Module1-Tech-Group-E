@@ -1,4 +1,4 @@
-package GeneralClasses;
+package Footwears;
 
 public class Boots extends Footwear {
     String typeBoots;

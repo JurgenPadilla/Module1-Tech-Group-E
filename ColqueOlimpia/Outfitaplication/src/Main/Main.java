@@ -1,6 +1,7 @@
-import GeneralClasses.Boots;
-import GeneralClasses.Footwear;
-import GeneralClasses.Tshirt;
+package Main;
+
+import Footwears.Boots;
+import Clothes.Tshirt;
 
 import java.util.*;
 
@@ -14,6 +15,6 @@ public class Main {
         List<Boots> footwearList = new ArrayList<Boots>();
         footwearList.add(new Boots("black", "36A", "Azaleia", true, "Letter", "UNDERKNEE"));
 
-        System.out.println("Hello Josy" + tshirtList.toString());
+        System.out.println("This is an outfit composed by " + " " + tshirtList.get(0).toString());
     }
 }

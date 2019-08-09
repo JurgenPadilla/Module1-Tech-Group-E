@@ -1,26 +1,24 @@
-package GeneralClasses;
+package Clothes;
 
-import Interfaces.IClothe;
+import Clothes.Clothe;
 
-public class Tshirt extends Clothe  {
-    String typeShirt;
+public class Tshirt extends Clothe {
+    String typeTshirt;
     boolean isPrinted;
-
-
     boolean isTaylor;
-    public Tshirt(String color, String size, String brand, String fabrique, boolean isTaylor, boolean isFormal, String typeShirt, boolean isPrinted) {
+    public Tshirt(String color, String size, String brand, String fabrique, boolean isTaylor, boolean isFormal, String typeTshirt, boolean isPrinted) {
         super(color, size, brand, fabrique, isFormal);
-        this.typeShirt = typeShirt;
+        this.typeTshirt = typeTshirt;
         this.isPrinted = isPrinted;
         this.isTaylor = isTaylor;
     }
 
     public String getTypeShirt() {
-        return typeShirt;
+        return typeTshirt;
     }
 
     public void setTypeShirt(String typeShirt) {
-        this.typeShirt = typeShirt;
+        this.typeTshirt = typeShirt;
     }
 
     public boolean isPrinted() {
@@ -39,6 +37,8 @@ public class Tshirt extends Clothe  {
         isTaylor = taylor;
     }
 
-
+    public String toString (){
+        return "Tshirt features " + this.typeTshirt + " " + this.color + " "+this.brand;
+    }
 
 }

@@ -250,12 +250,16 @@ public class Main {
                 }
 
                 List<IQuestion> iQuestionList = quiz.getiQuestions();
+
                 for (IQuestion i : iQuestionList) {
-                    System.out.print(i.display());
-                    System.out.print("Answer: ");
-                    String optionAnswer = scanner.nextLine();
-                    System.out.println();
-                    answerPersonList.get(answerPersonList.size() - 1).saveNota(i.getNotaAnswer(optionAnswer));
+                    String optionAnswer = "";
+                    while (optionAnswer.isEmpty()) {
+                        System.out.print(i.display());
+                        System.out.print("Answer: ");
+                        optionAnswer = util.validateAnswerChar(scanner.nextLine(), iQuestionList.size());
+                        System.out.println();
+                        answerPersonList.get(answerPersonList.size() - 1).saveNota(i.getNotaAnswer(optionAnswer));
+                    }
                 }
                 print("*****************************************");
                 print("Score: " + answerPersonList.get(answerPersonList.size() - 1).getNota());
